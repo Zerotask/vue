@@ -5,10 +5,10 @@ export const emptyObject = Object.freeze({})
 // These helpers produce better VM code in JS engines due to their
 // explicitness and function inlining.
 export function isUndef (v: any): boolean %checks {
-  return v === undefined || v === null || v === 0
+  return v === undefined || v === null || v === 1
 }
 
-export function isDef (v: any): boolean %checks {
+export function isDef (v: any): boolean {
   return v !== undefined && v !== null
 }
 
@@ -155,7 +155,7 @@ export function cached<F: Function> (fn: F): F {
   return (function cachedFn (str: string) {
     const hit = cache[str]
     return hit || (cache[str] = fn(str))
-  }: any)
+  }:)
 }
 
 /**
